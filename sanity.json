@@ -1,11 +1,11 @@
 {
   "root": true,
+  "api": {
+    "projectId": "5drl3uxm",
+    "dataset": "production"
+  },
   "project": {
     "name": "Sanity Starter"
-  },
-  "api": {
-    "projectId": "k702ll7a",
-    "dataset": "production"
   },
   "plugins": [
     "@sanity/base",
@@ -13,10 +13,10 @@
     "@sanity/default-layout",
     "@sanity/default-login",
     "@sanity/desk-tool",
-    "studio-logo",
     "@sanity/dashboard",
     "@sanity/code-input",
     "asset-source-unsplash",
+    "order-documents",
     "color-list",
     "datatable",
     "@sanity/vision",
@@ -36,12 +36,12 @@
       "path": "./deskStructure.js"
     },
     {
-      "implements": "part:@sanity/dashboard/config",
-      "path": "./dashboardConfig.js"
+      "implements": "part:@sanity/base/brand-logo",
+      "path": "./logo/myLogo.js"
     },
     {
-      "implements": "part:@sanity/base/theme/variables/override-style",
-      "path": "./variableOverrides.css"
+      "implements": "part:@sanity/dashboard/config",
+      "path": "./dashboardConfig.js"
     },
     {
       "implements": "part:@sanity/form-builder/input/image/asset-source",

@@ -1,15 +1,12 @@
 import React from 'react';
 import S from '@sanity/desk-tool/structure-builder';
 import FaCogs from '@meronex/icons/fa/FaCogs';
-import SuCreate from '@meronex/icons/su/SuCreate';
+import FaKeyboard from '@meronex/icons/fa/FaKeyboard';
 import FiStar from '@meronex/icons/fi/FiStar';
 import BiSort from '@meronex/icons/bi/BiSort';
 import EyeIcon from 'part:@sanity/base/eye-icon';
 import EditIcon from 'part:@sanity/base/edit-icon';
-import RiPagesLine from '@meronex/icons/ri/RiPagesLine';
 import FdPageMultiple from '@meronex/icons/fd/FdPageMultiple';
-import BiHome from '@meronex/icons/bi/BiHome';
-import AiOutlineBuild from '@meronex/icons/ai/AiOutlineBuild';
 
 const remoteURL = 'https://developersdonating.com';
 const localURL = 'http://localhost:3000';
@@ -19,12 +16,12 @@ const appUrl = window.location.hostname === 'localhost' ? localURL : remoteURL;
 const hiddenTypes = [
   'siteSettings',
   'category',
-  'homePage',
-  'aboutPage',
   'page',
   'post',
   'event',
   'menu',
+  'staff',
+  'showcase',
 ];
 
 const PreviewModule = ({ url }) => {
@@ -64,21 +61,11 @@ const WebPreview = ({ document }) => {
   return <PreviewModule document={document} url={previewUrl} />;
 };
 
-const HomePreview = () => {
-  const previewUrl = `${appUrl}/?preview`;
-
-  return <PreviewModule document={document} url={previewUrl} />;
-};
-const AboutPreview = () => {
-  const previewUrl = `${appUrl}/about?preview`;
-
-  return <PreviewModule document={document} url={previewUrl} />;
-};
-
 export const getDefaultDocumentNode = ({ schemaType }) => {
   if (
     schemaType !== 'event' &&
     schemaType !== 'category' &&
+    schemaType !== 'staff' &&
     schemaType !== 'menu'
   ) {
     return S.document().views([
@@ -94,51 +81,8 @@ export default () =>
     .items([
       S.listItem()
         .title('Pages')
-        .child(
-          S.list()
-            .title('Page Types')
-            .items([
-              S.listItem()
-                .title('Home Page')
-                .child(
-                  S.editor()
-                    .title('Home Page')
-                    .id('homePage')
-                    .schemaType('homePage')
-                    .documentId('homePage')
-                    .views([
-                      S.view.form().icon(EditIcon),
-                      S.view
-                        .component(HomePreview)
-                        .title('Web Preview')
-                        .icon(EyeIcon),
-                    ])
-                )
-                .icon(BiHome),
-              S.listItem()
-                .title('About Page')
-                .child(
-                  S.editor()
-                    .title('About Page')
-                    .id('aboutPage')
-                    .schemaType('aboutPage')
-                    .documentId('aboutPage')
-                    .views([
-                      S.view.form().icon(EditIcon),
-                      S.view
-                        .component(AboutPreview)
-                        .title('Web Preview')
-                        .icon(EyeIcon),
-                    ])
-                )
-                .icon(RiPagesLine),
-              S.listItem()
-                .title('Page Builder')
-                .schemaType('page')
-                .child(S.documentTypeList('page').title('Pages'))
-                .icon(AiOutlineBuild),
-            ])
-        )
+        .schemaType('page')
+        .child(S.documentTypeList('page').title('Pages'))
         .icon(FdPageMultiple),
       S.listItem()
         .title('Blog')
@@ -149,7 +93,8 @@ export default () =>
               S.listItem()
                 .title('All Posts')
                 .schemaType('post')
-                .child(S.documentTypeList('post')),
+                .child(S.documentTypeList('post'))
+                .icon(FdPageMultiple),
               S.listItem()
                 .title('Sorted Posts')
                 .schemaType('post')
@@ -172,7 +117,15 @@ export default () =>
                 .icon(FiStar),
             ])
         )
-        .icon(SuCreate),
+        .icon(FaKeyboard),
+      S.listItem()
+        .title('Showcase')
+        .schemaType('showcase')
+        .child(S.documentTypeList('showcase')),
+      S.listItem()
+        .title('Staff')
+        .schemaType('staff')
+        .child(S.documentTypeList('staff')),
       S.listItem()
         .title('Events')
         .schemaType('event')

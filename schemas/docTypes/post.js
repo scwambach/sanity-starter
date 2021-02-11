@@ -1,6 +1,5 @@
 import FiStar from '@meronex/icons/fi/FiStar';
-import SuCreate from '@meronex/icons/su/SuCreate';
-
+import FaKeyboard from '@meronex/icons/fa/FaKeyboard';
 export const slugify = (string) => {
   const a =
     'àáäâãåăæąçćčđďèéěėëêęǵḧìíïîįłḿǹńňñòóöôœøṕŕřßśšșťțùúüûǘůűūųẃẍÿýźžż·/_,:;';
@@ -24,7 +23,7 @@ export default {
   name: 'post',
   title: 'Post',
   type: 'document',
-  icon: SuCreate,
+  icon: FaKeyboard,
   fields: [
     {
       name: 'title',

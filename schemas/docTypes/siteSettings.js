@@ -4,8 +4,6 @@ export default {
   name: 'siteSettings',
   title: 'Site Settings',
   type: 'document',
-  liveEdit: false,
-  __experimental_actions: ['update', 'publish'],
   icon: FaCogs,
   fields: [
     {

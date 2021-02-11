@@ -1,0 +1,14 @@
+.myLogo {
+  height: 100%;
+  max-height: 4rem;
+  display: block;
+}
+
+[class^='Branding_root_'],
+[class^='Navbar_branding_'] {
+  padding: 0 !important;
+}
+
+[class^='Navbar_root_'] {
+  align-items: center;
+}

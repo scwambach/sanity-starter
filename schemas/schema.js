@@ -20,13 +20,11 @@ import link from './modules/link';
 import imageWText from './modules/imageWText';
 import menuItem from './modules/menuItem';
 import socialItem from './modules/socialItem';
-import iconSelector from './modules/iconSelector';
-import colorList from './modules/colorList';
-import homePage from './docTypes/homePage';
-import aboutPage from './docTypes/aboutPage';
 import staticHeroBanner from './components/staticHeroBanner';
 import menu from './docTypes/menu';
 import imageGallery from './components/imageGallery';
+import staff from './docTypes/staff';
+import showcase from './docTypes/showcase';
 
 export default createSchema({
   name: 'default',
@@ -37,8 +35,8 @@ export default createSchema({
     post,
     page,
     event,
-    homePage,
-    aboutPage,
+    staff,
+    showcase,
 
     // Taxonomies
     category,
@@ -58,7 +56,5 @@ export default createSchema({
     imageWText,
     menuItem,
     socialItem,
-    iconSelector,
-    colorList,
   ]),
 });
